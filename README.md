@@ -1,1 +1,2 @@
 # chrome-extension
+a chrome extension that allows you to right click on a youtube video or song on the spotify web player that will open up guitar tab or chords from ultimateguitar.com in the next window

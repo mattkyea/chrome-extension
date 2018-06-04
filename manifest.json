@@ -1,0 +1,22 @@
+{
+    "manifest_version": 2,
+    "name": "My Cool Extension",
+    "version": "1.0",
+    "description": "Right click on Youtube to pull up chords for the song you're listening to",
+    "author": "Matt Kyea",
+    "permissions": [
+        "contextMenus"
+    ],
+    "background": {
+        "scripts": ["background.js"],
+        "persistent": false
+    },
+    "icons": {
+        "16": "icon-bitty.png",
+        "48": "icon-small.png",
+        "128": "icon-large.png"
+    },
+    "browser_action": {
+        "default_popup": "popup.html"
+    }
+}

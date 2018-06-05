@@ -8,15 +8,17 @@
         "contextMenus"
     ],
     "background": {
-        "scripts": ["background.js"],
+        "scripts": ["jquery-3.3.1.js","background.js"],
         "persistent": false
     },
+    "context_script":[
+        {
+            "scripts":["contextScript.js"]
+        }
+    ],
     "icons": {
         "16": "icon-bitty.png",
         "48": "icon-small.png",
         "128": "icon-large.png"
-    },
-    "browser_action": {
-        "default_popup": "popup.html"
     }
 }

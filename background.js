@@ -4,7 +4,8 @@ window.oncontextmenu = null;//FIX
 function onClickHandler(info){
     if (info.menuItemId == "chords") {
         alert("lets get some chords");
-        getYoutubeTitle(window.location.href);
+        alert($("a[href^='http']").eq(0).attr("href") + " wats goin on");
+        getYoutubeTitle($("a[href^='http']").eq(0).attr("href"));
     }else{
         alert("lets get some tab");
     }

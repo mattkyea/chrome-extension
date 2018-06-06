@@ -2,18 +2,18 @@ javascript:void(document.oncontextmenu=null);//allows for context menus on spoti
 window.oncontextmenu = null;//FIX
 
 function onClickHandler(info){
-    if (info.menuItemId == "chords") {
-        alert("lets get some chords");
-        alert($("a[href^='http']").eq(0).attr("href") + " wats goin on");
-        getYoutubeTitle($("a[href^='http']").eq(0).attr("href"));
-    }else{
-        alert("lets get some tab");
-    }
-};
+    chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+        var activeTab = tabs[0];
+        if(info.menuItemId == "chords"){
+            //alert("lets get some chords");
+            chrome.tabs.sendMessage(activeTab.id, {"message": "clicked_chords"});
+        }else{
+            alert("lets get some tab");
+            chrome.tabs.sendMessage(activeTab.id, {"message": "clicked_tab"});
+        }
+})};
 
-function getYoutubeTitle(url){
-    alert(url);
-}
+console.log("howdy");
 
 chrome.contextMenus.onClicked.addListener(onClickHandler);
 

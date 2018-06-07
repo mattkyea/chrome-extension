@@ -1,25 +1,13 @@
 chrome.runtime.onMessage.addListener(
     function(request, sender, sendResponse) {
-
-        var firstHref = $("a[href^='http']").eq(0).attr("href");
-
-        var url = document.getElementsById("container");
-        url = url.getElementsByTagName("h1");
-        url = url.getElementsByTagName("yt-formatted-string");
-        //document.getElementByID("info").innerHTML;
-        //url  = url[0].innerHTML;
-        //console.log(url);
-        //alert(url + "  URL");
-
+        var title = $("h1:first").text();//title of video
         if(request.message === "clicked_chords") {
-            alert(firstHref+" chords");
-            alert(url + " chords");
+            title = title + " chords";
         }
         else{
-            alert(firstHref+" tab");
-            alert(url + " tab");
+            title = title + " tab";
         } 
+        var url = "https://www.ultimate-guitar.com/search.php?search_type=title&value=" + title;
+        chrome.runtime.sendMessage({"message": "open_new_tab", "url": url});
     }
   );
-  //*[@id="container"]/h1/yt-formatted-string
-  //"style-scope ytd-video-primary-info-renderer"

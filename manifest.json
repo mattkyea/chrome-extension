@@ -5,7 +5,8 @@
     "description": "Right click on Youtube to pull up chords for the song you're listening to",
     "author": "Matt Kyea",
     "permissions": [
-        "contextMenus"
+        "contextMenus",
+        "tabs"
     ],
     "background": {
         "scripts": ["jquery-3.3.1.js","background.js"],

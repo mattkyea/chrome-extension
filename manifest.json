@@ -16,7 +16,8 @@
         {
             "matches": [
               "*://www.youtube.com/*", 
-              "*://open.spotify.com/*"
+              "*://open.spotify.com/*",
+              "*://www.ultimate-guitar.com/*"
             ],
             "js": ["jquery-3.3.1.js","contentScript.js"]
           }

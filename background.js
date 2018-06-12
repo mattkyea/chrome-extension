@@ -78,21 +78,25 @@ chrome.contextMenus.onClicked.addListener(
         chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {            
             var activeTab = tabs[0];
             var port = chrome.tabs.connect(activeTab.id, {name: "defaultPort"});
+            console.log(activeTab.id);
             if(info.menuItemId == "chords"){
-                console.log("neato");
+                //console.log("neato");
                 port.postMessage({"message": "clicked_chords"});
             }else{
                 port.postMessage({"message": "clicked_tab"});
             }
             port.onMessage.addListener(function(msg) {
                 if (msg.message == "open_new_tab"){
-                    console.log("sick");
+                    //console.log("sick");
+                    console.log(activeTab.id);
                     chrome.tabs.create({"url": msg.url});
+                    console.log(activeTab.id);
                     chrome.tabs.query({active: true, currentWindow: true}, function(sites) {
                         var activeSite = sites[0];
                         console.log("good so far");
                         console.log(activeSite.id);
-                        port.postMessage({"ID": activeSite.Id, "message": "grab_link"});
+                        console.log("came from " + activeSite.url);
+                        port.postMessage({"ID": activeSite.Id, "url": activeSite.url, "message": "grab_link"});
                     });
                 }else{
                     chrome.tabs.create({"url": msg.url});

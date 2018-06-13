@@ -99,6 +99,9 @@ chrome.contextMenus.onClicked.addListener(
                         port.postMessage({"ID": activeSite.Id, "url": activeSite.url, "message": "grab_link"});
                     });
                 }else{
+                    //alert("que?");
+                    //console.log("cool");
+                    console.log(msg.data);
                     chrome.tabs.create({"url": msg.url});
                 }
             });

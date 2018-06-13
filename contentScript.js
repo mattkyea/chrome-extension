@@ -53,18 +53,29 @@ chrome.runtime.onConnect.addListener(function(port) {
             //alert("no way");
             //var link = $("a").text();//3rd link gets past two ads
             //var link = $("a[href^='http']").eq(0).attr("href");
-            var link = $.get(msg.url, "text", function(data){
+            var text = "bob";
+            var finalURL = "a";
+            $.get(msg.url, function(data){
                 //alert(data);
-                var begin = data.indexOf("<a href=\"https://tabs.ultimate-guitar.com/tab/");
+                var begin = data.indexOf("tabs.ultimate-guitar.com/tab/");
+                alert(begin);
                 //<a href="https://tabs.ultimate-guitar.com/tab/pink_floyd/comfortably_numb_tabs_79177" class="link-primary _1kcZ5"><span><span><b>Comfortably</b></span><span> </span><span><b>Numb</b></span></span></a>
-                //alert(begin);
-                var end = data.indexOf("\" class=\"link-primary _1kcZ5\">");
+                //alert(data.substring(25000));
+                //var end = data.indexOf("\" class=\"link-primary _1kcZ5\">");
                 //alert(end);
-                var finalURl = data.substring(begin, end);
-                alert(finalURL);
+                //var finalURl = data.substring(begin, end);
+                //alert(finalURL);
+                //text = data.match(/<h1 class="flat-top text-primary"> ([\d]*?) <\/h1>/)[1];
+                //<h1 class=”flat-top text-primary”>[ 1498 ]</h1>
+                //<a href="https://tabs.ultimate-guitar.com/tab/don_mclean/vincent_tabs_121418" class="link-primary _1kcZ5"><span><span><b>Vincent</b></span></span></a>
+                //alert("nice");
+                text = data.match(/<a href="https:\/\/tabs.ultimate-guitar.com\/tab>\/"([\w]) "class="link-primary _1kcZ5">/)[1];
+                //var test = data.match(/<h1 class="flat-top text-primary">\[ ([\d]*?) \]<\/h1>/)[1];
+                alert("close");
+                alert(text);
             });
             //alert(link);
-            port.postMessage({"message": "open_link", "url": finalURL});
+            port.postMessage({"message": "open_link", "url": finalURL, "text": text});
         }
     });
 });

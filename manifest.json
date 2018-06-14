@@ -1,6 +1,6 @@
 {
     "manifest_version": 2,
-    "name": "My Cool Extension",
+    "name": "YouTube Chord/Tab Finder",
     "version": "1.0",
     "description": "Right click on Youtube to pull up chords for the song you're listening to",
     "author": "Matt Kyea",
